@@ -1,4 +1,4 @@
-from app.models.book import Book
+from app.models.planet import Planet
 from flask import Blueprint, jsonify, make_response, request 
 
 
