@@ -6,5 +6,10 @@ class Planet(db.Model):
     description = db.Column(db.String)
     has_moons = db.Column(db.Boolean)
 
-    def to_string(self):
-        return f"{self.id}: {self.name} Description: {self.description}"
+    def to_json(self):
+        return {
+        "id": self.id,
+        "name": self.name,
+        "description": self.description,
+        "has_moons": self.has_moons
+    }
