@@ -2,6 +2,7 @@ from app.models.planet import Planet
 from flask import Blueprint, jsonify, make_response, request 
 from app import db
 
+planets_bp = Blueprint("planets", __name__, url_prefix="/planets")
 
 planets_bp = Blueprint("planets", __name__, url_prefix="/planets")
 
