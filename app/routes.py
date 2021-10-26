@@ -1,6 +1,7 @@
 from app.models.planet import Planet
 from flask import Blueprint, jsonify, make_response, request 
 
+planets_bp = Blueprint("planets", __name__, url_prefix="/planets")
 
 # class Planet:
 #     def __init__(self, id, name, description, has_moons=True):
@@ -19,8 +20,6 @@ from flask import Blueprint, jsonify, make_response, request
 #     Planet(7, "Mercury", "No Humans"),
 #     Planet(8, "Jupiter", "No Humans"),
 # ] 
-
-planets_bp = Blueprint("planets", __name__, url_prefix="/planets")
 
 # @planets_bp.route("", methods=["GET"])
 # def handle_planets():
