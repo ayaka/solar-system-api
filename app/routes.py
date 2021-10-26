@@ -9,7 +9,13 @@ planets_bp = Blueprint("planets", __name__, url_prefix="/planets")
 def handle_planets():
     
     if request.method == "GET":
-        planets = Planet.query.all()
+        name_query = request.args.get("name")
+        if name_query:
+            # planets = Planet.query.filter_by(name=name_query)
+            planets = Planet.query.filter(name_query.like(name_query))
+        else:
+            planets = Planet.query.all()
+
         planets_response = [planet.to_json() for planet in planets]
         
         return jsonify(planets_response), 200
@@ -35,10 +41,12 @@ def handle_planet(planet_id):
     planet = Planet.query.get(planet_id)
     if planet is None:
         return make_response("", 404)
+        
     if request.method == "DELETE":
         db.session.delete(planet)
         db.session.commit()
         return make_response(f"Planet #{planet.id} successfully deleted.", 200)
+
     elif request.method == "GET":
         return planet.to_json(), 200
 
