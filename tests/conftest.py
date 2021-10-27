@@ -30,7 +30,7 @@ def two_saved_planets(app):
     pluto_planet = Planet(
         name="Pluto",
         description="sad",
-        has_moon=True
+        has_moons=True
     )
 
     db.session.add_all([arrakis_planet, pluto_planet])
